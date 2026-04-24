@@ -1,26 +1,35 @@
+'use client';
+
+import { motion } from "framer-motion";
+
+const text = [
+  "Lulusan Politeknik Negeri Padang tahun 2025.",
+  "Berpengalaman dalam IT Support, maintenance, dan troubleshooting.",
+  "Memiliki kemampuan dalam pengembangan web dan mobile.",
+  "Pernah bekerja sebagai Project Manager dan Developer.",
+];
+
 export default function About() {
   return (
-    <section id="about" className="mt-16 text-center max-w-3xl mx-auto">
-      <h2 className="text-3xl font-semibold">Tentang Saya</h2>
+    <section id="about" className="min-h-screen flex items-center justify-center text-center px-6 scroll-mt-24">
+      
+      <div className="max-w-3xl space-y-6">
 
-      <p className="mt-4 text-gray-400 leading-relaxed">
-        Perkenalkan saya Muhammad Ardy Ansyah (Ryan), lulusan tahun 2025 dari 
-        Politeknik Negeri Padang dengan latar belakang Teknologi Rekayasa 
-        Perangkat Lunak.
-      </p>
+        <h2 className="text-3xl font-semibold">Tentang Saya</h2>
 
-      <p className="mt-4 text-gray-400 leading-relaxed">
-        Saya memiliki keterampilan dalam instalasi perangkat keras, maintenance, 
-        serta konsultasi IT. Selain itu, saya juga memiliki kemampuan dalam 
-        pengembangan web dan aplikasi mobile, meskipun saya lebih tertarik 
-        pada bidang hardware.
-      </p>
+        {text.map((line, i) => (
+          <motion.p
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.3 }}
+            className="text-gray-400 text-lg"
+          >
+            {line}
+          </motion.p>
+        ))}
 
-      <p className="mt-4 text-gray-400 leading-relaxed">
-        Selama masa studi, saya bekerja sebagai tenaga ahli IT freelance dalam 
-        melakukan pemeliharaan perangkat serta troubleshooting berbagai 
-        permasalahan hardware dan software.
-      </p>
+      </div>
     </section>
   );
 }

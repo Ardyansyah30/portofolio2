@@ -1,56 +1,95 @@
-import { projects } from "@/data/projects";
+'use client';
+
+import { projects } from "../../../components/projectData";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function Page({ params }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default function ProjectDetail({ params }) {
+  const [project, setProject] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      const resolved = await params;
+      const found = projects.find((p) => p.slug === resolved.slug);
+      setProject(found);
+    }
+
+    load();
+  }, [params]);
+
+  const { scrollYProgress } = useScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
 
   if (!project) {
-    return <div className="p-10 text-white">Project tidak ditemukan</div>;
+    return <div className="text-white p-10">Loading...</div>;
   }
 
   return (
-    <main className="bg-gray-950 text-white min-h-screen px-6 md:px-20 py-10">
+    <main className="relative min-h-screen bg-black text-white overflow-hidden">
 
       {/* BACK BUTTON */}
-      <Link href="/" className="text-gray-400 hover:text-white">
-        ← Kembali
+      <Link
+        href="/"
+        className="fixed top-6 left-6 z-50 text-gray-400 hover:text-white"
+      >
+        ← Back
       </Link>
 
-      {/* TITLE */}
-      <h1 className="text-4xl md:text-5xl font-bold mt-6">
-        {project.title}
-      </h1>
+      {/* HERO */}
+      <section className="relative h-screen sticky top-0 flex items-center justify-center overflow-hidden">
 
-      <p className="text-gray-400 mt-2">{project.desc}</p>
+        <motion.div style={{ scale }} className="relative w-full h-full">
+          <Image
+            src={project.image}
+            fill
+            sizes="100vw"
+            alt={project.title}
+            className="object-cover"
+          />
+        </motion.div>
 
-      {/* IMAGE */}
-      <div className="mt-8">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={800}
-          height={400}
-          className="rounded-2xl shadow-lg"
-        />
-      </div>
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-black/50" />
 
-      {/* TECH STACK */}
-      <div className="mt-6 flex flex-wrap gap-3">
-        {project.tech.map((tech, i) => (
-          <span
-            key={i}
-            className="bg-gray-800 px-4 py-2 rounded-full text-sm"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+        {/* TITLE */}
+        <div className="absolute text-center z-10 px-6">
+          <h1 className="text-4xl md:text-6xl font-bold">
+            {project.title}
+          </h1>
+        </div>
 
-      {/* CONTENT */}
-      <div className="mt-8 text-gray-300 whitespace-pre-line leading-relaxed">
-        {project.content}
-      </div>
+      </section>
+
+      {/* CONTENT (FIXED SPACING) */}
+      <section className="relative z-10 max-w-4xl mx-auto px-6 py-8 space-y-6 -mt-10">
+
+        {/* DESCRIPTION */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <h2 className="text-2xl mb-3">Deskripsi</h2>
+          <p className="text-gray-400 leading-relaxed">
+            {project.desc}
+          </p>
+        </motion.div>
+
+        {/* DETAIL */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          <h2 className="text-2xl mb-3">Detail Project</h2>
+          <pre className="text-gray-300 whitespace-pre-wrap leading-relaxed">
+            {project.content}
+          </pre>
+        </motion.div>
+
+      </section>
 
     </main>
   );

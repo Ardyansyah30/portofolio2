@@ -1,40 +1,32 @@
-import Image from "next/image";
-import { projects } from "../data/projects";
+'use client';
+
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { projects } from "./projectData";
 
 export default function Projects() {
+  const router = useRouter();
+
   return (
-    <section id="projects" className="mt-16">
-      <h2 className="text-3xl text-center font-semibold">
-        Proyek Saya
-      </h2>
+    <section id="projects" className="min-h-screen px-6 py-24 scroll-mt-24">
 
-      <div className="grid md:grid-cols-2 gap-6 mt-6">
-        {projects.map((p) => (
-          <div key={p.slug} className="bg-gray-900 p-5 rounded-lg">
+      <h2 className="text-3xl text-center mb-10">Projects</h2>
 
-            <Image
-              src={p.image}
-              width={500}
-              height={300}
-              alt={p.title}
-              className="w-full h-48 object-cover rounded"
-            />
-
-            <h3 className="mt-4 font-bold text-lg">
-              {p.title}
-            </h3>
-
-            <p className="text-gray-400 text-sm mt-1">
-              {p.desc}
-            </p>
-
-            <p className="text-gray-500 mt-3 whitespace-pre-line text-sm">
-              {p.content}
-            </p>
-
-          </div>
+      <div className="grid md:grid-cols-3 gap-6">
+        {projects.map((item, i) => (
+          <motion.div
+            key={i}
+            onClick={() => router.push(`/projects/${item.slug}`)}
+            whileHover={{ scale: 1.08 }}
+            className="bg-white/5 p-4 rounded-xl cursor-pointer"
+          >
+            <img src={item.image} className="rounded mb-4" />
+            <h3 className="font-semibold">{item.title}</h3>
+            <p className="text-gray-400 text-sm mt-2">{item.desc}</p>
+          </motion.div>
         ))}
       </div>
+
     </section>
   );
 }

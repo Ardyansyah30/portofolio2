@@ -1,28 +1,34 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
-import Contact from "../components/Contact";
+import Skills from "../components/Skills";
 import Education from "../components/Education";
-import CVViewer from "../components/CVViewer";
 
 export default function Home() {
   return (
-    <main className="bg-gray-950 text-white min-h-screen px-6 md:px-20">
-      <Navbar />
+    <main className="relative bg-black text-white overflow-hidden">
+
+      {/* BACKGROUND GRADIENT */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-gray-900 to-black" />
+
+      {/* GLOW KIRI */}
+      <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-blue-500/20 blur-[120px] rounded-full -z-10" />
+
+      {/* GLOW KANAN */}
+      <div className="absolute bottom-20 right-10 w-[400px] h-[400px] bg-purple-500/20 blur-[120px] rounded-full -z-10" />
+
+      {/* RADIAL LIGHT (HALUS BANGET) */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)]" />
+
+      {/* CONTENT */}
       <Hero />
       <About />
-
-      <Education />
-
-      <Skills />
       <Experience />
       <Projects />
+      <Skills />
+      <Education />
 
-
-      <Contact />
     </main>
   );
 }

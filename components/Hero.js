@@ -22,17 +22,17 @@ export default function Hero() {
 
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center text-center">
 
-        <motion.div style={{ scale }} className="w-44 h-44 relative mb-6">
+        <motion.div style={{ scale }} className="w-32 h-32 md:w-44 md:h-44 relative mb-6">
           <Image
             src="/profile.jpg"
             fill
-            sizes="176px"
+            sizes="(max-width: 768px) 128px, 176px"
             alt="Profile"
             className="rounded-full object-cover border-4 border-gray-800"
           />
         </motion.div>
 
-        <motion.h1 style={{ opacity, y }} className="text-5xl font-bold">
+        <motion.h1 style={{ opacity, y }} className="text-3xl md:text-5xl font-bold px-4">
           Muhammad Ardy Ansyah
         </motion.h1>
 

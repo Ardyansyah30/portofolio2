@@ -49,7 +49,7 @@ export default function ParallaxSection({
     <motion.section
       ref={ref}
       id={id}
-      className={`relative overflow-hidden py-24 ${className}`}
+      className={`relative overflow-hidden py-16 md:py-24 ${className}`}
       style={{
         y: isMobile ? 0 : offsetY,
       }}

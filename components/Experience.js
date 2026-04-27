@@ -55,21 +55,21 @@ export default function Experience() {
       <div className="relative max-w-2xl mx-auto">
 
         {/* LINE */}
-        <div className="absolute left-1/2 top-0 w-[2px] h-full bg-white/20 -translate-x-1/2"></div>
+        <div className="absolute left-1/2 top-0 w-[2px] h-full bg-white/20 -translate-x-1/2 hidden md:block"></div>
 
         {data.map((item, i) => (
           <motion.div
             key={i}
             onClick={() => setSelected(item)}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+            initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
-            className={`mb-12 flex cursor-pointer ${
-              i % 2 === 0 ? 'justify-start' : 'justify-end'
+            className={`mb-12 flex cursor-pointer justify-center ${
+              i % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
             }`}
           >
-            <div className="bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition p-6 rounded-xl w-[45%]">
+            <div className="bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition p-6 rounded-xl w-full md:w-[45%]">
 
               <div className="text-3xl mb-2">{item.icon}</div>
 

@@ -9,8 +9,8 @@ export default function Contact() {
     { title: "WhatsApp", value: "082283864119", icon: "💬", link: "https://wa.me/6282283864119" },
     { title: "Email", value: "ardyansyahm492@gmail.com", icon: "📧", link: "mailto:ardyansyahm492@gmail.com" },
     { title: "Phone", value: "082283864119", icon: "📞", link: "tel:082283864119" },
-    { title: "GitHub", value: "ardy-ansyah", icon: "💻", link: "https://github.com/ardy-ansyah" },
-    { title: "LinkedIn", value: "Ardy Ansyah", icon: "🔗", link: "https://linkedin.com/in/ardyansyah" },
+    { title: "GitHub", value: "ardy-ansyah", icon: "💻", link: "https://github.com/Ardyansyah30" },
+    { title: "LinkedIn", value: "Ardy Ansyah", icon: "🔗", link: "https://www.linkedin.com/in/muhammad-ardyansyah-627bb512a/" },
   ];
 
   return (

@@ -1,15 +1,19 @@
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
+import TechStack from "../components/TechStack";
+import Contact from "../components/Contact";
 import Education from "../components/Education";
 
 export default function Home() {
   return (
     <main className="relative bg-black text-white overflow-hidden">
 
-      {/* BACKGROUND GRADIENT */}
+      {/* NAVBAR */}
+      <Navbar />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-gray-900 to-black" />
 
       {/* GLOW KIRI */}
@@ -27,6 +31,8 @@ export default function Home() {
       <Experience />
       <Projects />
       <Skills />
+      <TechStack />
+      <Contact />
       <Education />
 
     </main>

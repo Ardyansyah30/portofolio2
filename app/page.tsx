@@ -10,22 +10,13 @@ import Education from "../components/Education";
 
 export default function Home() {
   return (
-    <main className="relative bg-black text-white overflow-hidden">
-
-      {/* NAVBAR */}
+    <main className="relative bg-slate-950 text-white overflow-hidden">
       <Navbar />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-gray-900 to-black" />
 
-      {/* GLOW KIRI */}
-      <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-blue-500/20 blur-[120px] rounded-full -z-10" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+      <div className="absolute inset-x-0 top-20 h-72 bg-gradient-to-b from-cyan-500/10 to-transparent blur-3xl -z-10" />
+      <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-blue-500/10 to-transparent blur-3xl -z-10" />
 
-      {/* GLOW KANAN */}
-      <div className="absolute bottom-20 right-10 w-[400px] h-[400px] bg-purple-500/20 blur-[120px] rounded-full -z-10" />
-
-      {/* RADIAL LIGHT (HALUS BANGET) */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)]" />
-
-      {/* CONTENT */}
       <Hero />
       <About />
       <Experience />
@@ -34,7 +25,6 @@ export default function Home() {
       <TechStack />
       <Contact />
       <Education />
-
     </main>
   );
 }

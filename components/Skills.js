@@ -2,43 +2,40 @@
 
 import { motion } from "framer-motion";
 
+const skills = [
+  "IT Support",
+  "Backend Development",
+  "Android Development",
+  "Project Management",
+  "System Maintenance",
+  "Troubleshooting",
+];
+
 export default function Skills() {
-  const skills = [
-    "IT Support",
-    "Backend Developer",
-    "Android Developer",
-    "Machine Learning",
-    "Project Management",
-  ];
-
   return (
-    <section className="py-24 text-center">
-      <h2 className="text-3xl mb-10">Skills</h2>
+    <section className="py-24 px-6 scroll-mt-24">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <p className="text-sm uppercase tracking-[0.32em] text-cyan-300">Skills</p>
+          <h2 className="mt-4 text-4xl font-semibold text-white">Keterampilan Utama</h2>
+          <p className="mt-4 text-slate-400 leading-8">
+            Keahlian lintas disiplin yang mendukung ketepatan dan kinerja setiap proyek.
+          </p>
+        </div>
 
-      <div className="flex flex-wrap justify-center gap-4">
-        {skills.map((s, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ scale: 1.12 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="relative group"
-          >
-            {/* CARD */}
-            <div className="bg-white/10 border border-white/10 px-4 py-2 rounded-full cursor-pointer backdrop-blur-md transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg">
-              {s}
-            </div>
-
-            {/* POPUP */}
-            <div
-              className="absolute -top-10 left-1/2 -translate-x-1/2
-                         opacity-0 group-hover:opacity-100
-                         transition duration-300
-                         bg-white text-black text-xs px-3 py-1 rounded-full shadow-md"
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="rounded-3xl border border-slate-800 bg-slate-900/90 px-6 py-5 text-center shadow-lg shadow-slate-950/10"
             >
-              {s}
-            </div>
-          </motion.div>
-        ))}
+              <p className="text-lg font-semibold text-white">{skill}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

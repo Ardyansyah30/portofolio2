@@ -2,102 +2,82 @@
 
 import { motion } from "framer-motion";
 
+const techStack = [
+  { name: "Node.js", category: "Backend", level: "Advanced", description: "REST API, Express, server architecture" },
+  { name: "Express.js", category: "Backend", level: "Advanced", description: "API routing, middleware, performance" },
+  { name: "React", category: "Frontend", level: "Advanced", description: "SPA, component design, state management" },
+  { name: "Next.js", category: "Frontend", level: "Advanced", description: "SSR, SSG, performance optimization" },
+  { name: "JavaScript", category: "Frontend", level: "Advanced", description: "ES6+, DOM, async patterns" },
+  { name: "TypeScript", category: "Frontend", level: "Intermediate", description: "Typed code, interfaces, safer scaling" },
+  { name: "Android Studio", category: "Mobile", level: "Intermediate", description: "Android app development and debugging" },
+  { name: "Java", category: "Mobile", level: "Intermediate", description: "Android logic, OOP, lifecycle management" },
+  { name: "Kotlin", category: "Mobile", level: "Intermediate", description: "Modern Android development and coroutine use" },
+  { name: "MySQL", category: "Database", level: "Advanced", description: "Relational data modeling, queries, optimization" },
+  { name: "PostgreSQL", category: "Database", level: "Intermediate", description: "Structured storage, indexing, transactions" },
+  { name: "MongoDB", category: "Database", level: "Intermediate", description: "NoSQL data storage and flexible schemas" },
+  { name: "Git", category: "Tools", level: "Advanced", description: "Version control, branching, collaboration" },
+  { name: "Docker", category: "Tools", level: "Intermediate", description: "Containerization, deployment workflows" },
+  { name: "Linux", category: "Tools", level: "Intermediate", description: "Server maintenance dan command line" },
+  { name: "Trello", category: "Tools", level: "Advanced", description: "Project tracking and task coordination" },
+  { name: "VS Code", category: "Tools", level: "Advanced", description: "Productive development environment" },
+];
+
+const categories = ["Backend", "Frontend", "Mobile", "Database", "Tools"];
+
+const proficiencyColor = {
+  Advanced: "bg-cyan-500",
+  Intermediate: "bg-slate-500",
+  Beginner: "bg-slate-600",
+};
+
 export default function TechStack() {
-  const techStack = [
-    // Backend & Web
-    { name: "Node.js", category: "Backend" },
-    { name: "Express.js", category: "Backend" },
-    { name: "React", category: "Frontend" },
-    { name: "Next.js", category: "Frontend" },
-    { name: "JavaScript", category: "Language" },
-    { name: "TypeScript", category: "Language" },
-    { name: "Python", category: "Language" },
-    
-    // Mobile
-    { name: "Android Studio", category: "Mobile" },
-    { name: "Java", category: "Mobile" },
-    { name: "Kotlin", category: "Mobile" },
-    
-    // Databases
-    { name: "MySQL", category: "Database" },
-    { name: "PostgreSQL", category: "Database" },
-    { name: "MongoDB", category: "Database" },
-    
-    // Machine Learning
-    { name: "TensorFlow", category: "ML" },
-    { name: "Scikit-learn", category: "ML" },
-    { name: "Pandas", category: "ML" },
-    
-    // Tools & Platforms
-    { name: "Git", category: "Tools" },
-    { name: "Docker", category: "Tools" },
-    { name: "Linux", category: "Tools" },
-    { name: "Trello", category: "Tools" },
-    { name: "VS Code", category: "Tools" },
-  ];
-
-  const categories = [...new Set(techStack.map(t => t.category))];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <section className="py-24">
-      <h2 className="text-3xl mb-16 text-center">Tech Stack</h2>
+    <section className="py-24 px-6 scroll-mt-24">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <p className="text-sm uppercase tracking-[0.32em] text-cyan-300">Tech Stack</p>
+          <h2 className="mt-4 text-4xl font-semibold text-white">Teknologi Profesional</h2>
+          <p className="mt-4 text-slate-400 leading-8">
+            Stack teknis yang mendukung keandalan, performa, dan produktivitas dalam proyek IT profesional.
+          </p>
+        </div>
 
-      <div className="max-w-6xl mx-auto px-6">
-        {categories.map((category) => (
-          <motion.div key={category} className="mb-12">
-            {/* Category Title */}
-            <h3 className="text-lg font-semibold text-blue-400 mb-6 pl-2 border-l-2 border-blue-500">
-              {category}
-            </h3>
+        <div className="grid gap-8 lg:grid-cols-2">
+          {categories.map((category) => (
+            <div key={category} className="rounded-[2rem] border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/20">
+              <div className="mb-6 flex items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{category}</h3>
+                  <p className="mt-1 text-sm text-slate-400">Skill dan tools utama di area ini.</p>
+                </div>
+              </div>
 
-            {/* Tech Items Grid */}
-            <motion.div
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, margin: "-100px" }}
-            >
-              {techStack
-                .filter((tech) => tech.category === category)
-                .map((tech, i) => (
-                  <motion.div
-                    key={i}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="group relative"
-                  >
-                    {/* Glass Card */}
-                    <div className="backdrop-blur-lg bg-white/5 border border-white/20 rounded-lg px-4 py-3 cursor-pointer transition-all duration-300 group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-blue-500/20 glass-shine h-full flex items-center justify-center text-center">
-                      <span className="text-sm font-medium">{tech.name}</span>
-                    </div>
-                  </motion.div>
-                ))}
-            </motion.div>
-          </motion.div>
-        ))}
+              <div className="space-y-4">
+                {techStack
+                  .filter((tech) => tech.category === category)
+                  .map((tech, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.45, delay: index * 0.05 }}
+                      className="rounded-3xl border border-slate-800 bg-slate-950/80 p-4"
+                    >
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                          <p className="text-lg font-semibold text-white">{tech.name}</p>
+                          <p className="mt-2 text-sm text-slate-400">{tech.description}</p>
+                        </div>
+                        <span className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white ${proficiencyColor[tech.level]}`}>
+                          {tech.level}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
